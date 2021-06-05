@@ -1,35 +1,35 @@
 [
   {
-    "name": "brook server",
+    "command": "brook server",
     "description": "Brook is a cross-platform strong encryption and not detectable proxy.",
     "website": "https://txthinking.github.io/brook/#/brook-server",
-    "nami install": "github.com/txthinking/brook",
-    "function": "brook_server",
+    "nami": "github.com/txthinking/brook",
     "args": [
       {
-        "name": "listen",
-        "description": "Listen address, like: ':9999'",
+        "name": "--listen",
+        "value": ":9999",
+        "boolean": false,
+        "repeated": false
+      },
+      {
+        "name": "--password",
         "value": "",
+        "boolean": false,
         "repeated": false
       },
       {
-        "name": "password",
-        "description": "Server password",
-        "value": "",
+        "name": "--tcpTimeout",
+        "value": 0,
+        "boolean": false,
         "repeated": false
       },
       {
-        "name": "tcpTimeout",
-        "description": "connection deadline time (s)",
-        "value": "0",
-        "repeated": false
-      },
-      {
-        "name": "udpTimeout",
-        "description": "connection deadline time (s)",
-        "value": "60",
+        "name": "--udpTimeout",
+        "value": 60,
+        "boolean": false,
         "repeated": false
       }
-    ]
+    ],
+    "function": "brook_server"
   }
 ]

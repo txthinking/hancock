@@ -1,7 +1,8 @@
 [
   {
     "name": "brook server",
-    "description": "brook server https://txthinking.github.io/brook",
+    "description": "Brook is a cross-platform strong encryption and not detectable proxy.",
+    "website": "https://txthinking.github.io/brook/#/brook-server",
     "nami install": "github.com/txthinking/brook",
     "function": "brook_server",
     "args": [

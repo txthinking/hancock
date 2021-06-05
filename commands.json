@@ -1,0 +1,30 @@
+[
+  {
+    "name": "brook server",
+    "description": "brook server https://txthinking.github.io/brook",
+    "nami install": "github.com/txthinking/brook",
+    "function": "brook_server",
+    "args": [
+      "listen": {
+        "description": "Listen address, like: ':9999'",
+        "type": "string",
+        "value": "",
+      },
+      "password": {
+        "description": "Server password",
+        "type": "string",
+        "value": "",
+      },
+      "tcpTimeout": {
+        "description": "connection deadline time (s)",
+        "type": "int",
+        "value": 0,
+      },
+      "udpTimeout": {
+        "description": "connection deadline time (s)",
+        "type": "int",
+        "value": 60,
+      }
+    ]
+  }
+]

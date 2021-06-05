@@ -7,28 +7,19 @@
     "args": [
       {
         "name": "--listen",
-        "value": ":9999",
-        "repeated": false
+        "value": ":9999"
       },
       {
         "name": "--password",
-        "value": "",
-        "repeated": true
+        "value": "hello"
       },
       {
         "name": "--tcpTimeout",
-        "value": 0,
-        "repeated": false
+        "value": 0
       },
       {
         "name": "--udpTimeout",
-        "value": 60,
-        "repeated": false
-      },
-      {
-        "name": "--bool",
-        "value": false,
-        "repeated": false
+        "value": 60
       }
     ],
     "function": "brook_server"

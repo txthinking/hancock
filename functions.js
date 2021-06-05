@@ -3,19 +3,31 @@
 
 function brook_server(args){
   var s = "brook server";
-  
-  var listen = args.find(function(v){return v.name == 'listen'});
-  if(!listen.value) return [null, "missing listen"];
-  s += " --listen '" + listen.value + "'";
-  var password = args.find(function(v){return v.name == 'password'});
-  if(!password.value) return [null, "missing password"];
-  s += " --password '" + password.value + "'";
-  var tcpTimeout = args.find(function(v){return v.name == 'tcpTimeout'});
-  if(isNaN(parseInt(tcpTimeout.value))) return [null, "tcpTimeout must be int"];
-  s += " --tcpTimeout " + parseInt(tcpTimeout.value);
-  var udpTimeout = args.find(function(v){return v.name == 'udpTimeout'});
-  if(isNaN(parseInt(udpTimeout.value))) return [null, "udpTimeout must be int"];
-  s += " --udpTimeout " + parseInt(udpTimeout.value);
-  
+  for(var i=0; i<args.length; i++){
+        if(args[i].name == 'listen'){
+                if(!args[i].value){
+                        return [null, "missing listen"];
+                }
+            s += " --listen '" + args[i].value + "'";
+        }
+        if(args[i].name == 'password'){
+                if(!args[i].value){
+                        return [null, "missing password"];
+                }
+            s += " --password '" + args[i].value + "'";
+        }
+        if(args[i].name == 'tcpTimeout'){
+                if(isNaN(parseInt(args[i].value))){
+                        return [null, "tcpTimeout must be int"];
+                }
+            s += " --tcpTimeout " + parseInt(args[i].value);
+        }
+        if(args[i].name == 'udpTimeout'){
+                if(isNaN(parseInt(args[i].value))){
+                        return [null, "udpTimeout must be int"];
+                }
+            s += " --udpTimeout " + parseInt(args[i].value);
+        }
+  }
   return [s, null];
 }

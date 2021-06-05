@@ -4,7 +4,7 @@
     "description": "brook server https://txthinking.github.io/brook",
     "nami install": "github.com/txthinking/brook",
     "function": "brook_server",
-    "args": [
+    "args": {
       "listen": {
         "description": "Listen address, like: ':9999'",
         "type": "string",
@@ -25,6 +25,6 @@
         "type": "int",
         "value": 60
       }
-    ]
+    }
   }
 ]

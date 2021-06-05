@@ -8,22 +8,22 @@
       "listen": {
         "description": "Listen address, like: ':9999'",
         "type": "string",
-        "value": "",
+        "value": ""
       },
       "password": {
         "description": "Server password",
         "type": "string",
-        "value": "",
+        "value": ""
       },
       "tcpTimeout": {
         "description": "connection deadline time (s)",
         "type": "int",
-        "value": 0,
+        "value": 0
       },
       "udpTimeout": {
         "description": "connection deadline time (s)",
         "type": "int",
-        "value": 60,
+        "value": 60
       }
     ]
   }

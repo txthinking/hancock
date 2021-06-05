@@ -28,6 +28,12 @@
         "value": 60,
         "boolean": false,
         "repeated": false
+      },
+      {
+        "name": "--bool",
+        "value": false,
+        "boolean": false,
+        "repeated": false
       }
     ],
     "function": "brook_server"

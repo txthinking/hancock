@@ -8,31 +8,26 @@
       {
         "name": "--listen",
         "value": ":9999",
-        "boolean": false,
         "repeated": false
       },
       {
         "name": "--password",
         "value": "",
-        "boolean": false,
         "repeated": true
       },
       {
         "name": "--tcpTimeout",
         "value": 0,
-        "boolean": false,
         "repeated": false
       },
       {
         "name": "--udpTimeout",
         "value": 60,
-        "boolean": false,
         "repeated": false
       },
       {
         "name": "--bool",
         "value": false,
-        "boolean": false,
         "repeated": false
       }
     ],

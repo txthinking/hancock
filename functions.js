@@ -1,4 +1,4 @@
-// args: [{name: xxx, value: xxx}...]
+// args: [{"name": "xxx", "value": "xxx"}...]
 // return ["full command", null] or [null, "error message"]
 
 function brook_server(args){

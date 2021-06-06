@@ -160,7 +160,7 @@
     "nami": "github.com/txthinking/nico",
     "args": [
       {
-        "name": "args",
+        "name": "",
         "value": "'domain.com /path/to/web/root'"
       }
     ],

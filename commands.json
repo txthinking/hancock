@@ -135,5 +135,30 @@
       }
     ],
     "function": "brook_relay"
+  },
+  {
+    "command": "mr2 server",
+    "description": "mr2 can help you expose local server to external network. Support both TCP/UDP.",
+    "website": "https://github.com/txthinking/mr2",
+    "nami": "github.com/txthinking/mr2",
+    "args": [
+      {
+        "name": "--listen",
+        "value": ":9999"
+      },
+      {
+        "name": "--password",
+        "value": "hello"
+      },
+      {
+        "name": "--tcpTimeout",
+        "value": 0
+      },
+      {
+        "name": "--udpTimeout",
+        "value": 60
+      }
+    ],
+    "function": "mr2_server"
   }
 ]

@@ -194,7 +194,7 @@ function mr2_server(args){
 function nico(args){
     var s = "nico";
     for(var i=0; i<args.length; i++){
-        if(args[i].name == ''){
+        if(args[i].name == 'args'){
             if(!args[i].value){
                     return [null, "missing args"];
             }

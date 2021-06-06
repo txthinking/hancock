@@ -56,7 +56,7 @@
   {
     "command": "brook wssserver",
     "description": "Brook is a cross-platform strong encryption and not detectable proxy.",
-    "website": "https://txthinking.github.io/brook/#/brook-wsserver",
+    "website": "https://txthinking.github.io/brook/#/brook-wssserver",
     "nami": "github.com/txthinking/brook",
     "args": [
       {
@@ -85,7 +85,7 @@
   {
     "command": "brook socks5",
     "description": "Brook is a cross-platform strong encryption and not detectable proxy.",
-    "website": "https://txthinking.github.io/brook/#/brook-wsserver",
+    "website": "https://txthinking.github.io/brook/#/brook-socks5",
     "nami": "github.com/txthinking/brook",
     "args": [
       {
@@ -118,7 +118,7 @@
   {
     "command": "brook relay",
     "description": "Brook is a cross-platform strong encryption and not detectable proxy.",
-    "website": "https://txthinking.github.io/brook/#/brook-wsserver",
+    "website": "https://txthinking.github.io/brook/#/brook-relay",
     "nami": "github.com/txthinking/brook",
     "args": [
       {

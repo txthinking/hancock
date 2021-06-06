@@ -171,3 +171,35 @@ function brook_relay(args){
     }
     return [s, null];
 }
+
+function mr2_server(args){
+    var s = "mr2 server";
+    for(var i=0; i<args.length; i++){
+        if(args[i].name == '--listen'){
+            if(!args[i].value){
+                    return [null, "missing listen"];
+            }
+            s += " --listen '" + args[i].value + "'";
+        }
+        if(args[i].name == '--password'){
+            if(!args[i].value){
+                    return [null, "missing password"];
+            }
+            s += " --password '" + args[i].value + "'";
+        }
+    }
+    return [s, null];
+}
+
+function nico(args){
+    var s = "nico";
+    for(var i=0; i<args.length; i++){
+        if(args[i].name == ''){
+            if(!args[i].value){
+                    return [null, "missing args"];
+            }
+            s += ' ' + args[i].value;
+        }
+    }
+    return [s, null];
+}

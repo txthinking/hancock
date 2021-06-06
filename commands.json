@@ -101,10 +101,6 @@
         "value": "world"
       },
       {
-        "name": "--path",
-        "value": "/ws"
-      },
-      {
         "name": "--tcpTimeout",
         "value": 0
       },

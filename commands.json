@@ -149,16 +149,21 @@
       {
         "name": "--password",
         "value": "hello"
-      },
-      {
-        "name": "--tcpTimeout",
-        "value": 0
-      },
-      {
-        "name": "--udpTimeout",
-        "value": 60
       }
     ],
     "function": "mr2_server"
+  },
+  {
+    "command": "nico",
+    "description": "A HTTP2 web server for reverse proxy and single page application, automatically apply for ssl certificate, zero-configuration.",
+    "website": "https://github.com/txthinking/nico",
+    "nami": "github.com/txthinking/nico",
+    "args": [
+      {
+        "name": "",
+        "value": ":9999"
+      }
+    ],
+    "function": "nico"
   }
 ]

@@ -161,7 +161,7 @@
     "args": [
       {
         "name": "",
-        "value": "'domain.com /path/to/web/root'"
+        "value": "\"domain.com /path/to/web/root\""
       }
     ],
     "function": "nico"

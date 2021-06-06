@@ -193,13 +193,16 @@ function mr2_server(args){
 
 function nico(args){
     var s = "nico";
-    for(var i=0; i<args.length; i++){
-        if(args[i].name == 'args'){
-            if(!args[i].value){
-                    return [null, "missing args"];
+    var l = args[0].value.split(' ').filter(function(v){return v.trim() != ''});
+    var l1 = [];
+    var l2 = [];
+    l.forEach(function(v){
+            l2.push(v);
+            if(l2.length == 2){
+                    l1.push('"' + l2.join(' ') + '"');
+                    l2 = [];
             }
-            s += ' ' + args[i].value;
-        }
-    }
+    });
+    s += ' ' + l1.join(' ');
     return [s, null];
 }

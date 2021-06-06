@@ -23,5 +23,121 @@
       }
     ],
     "function": "brook_server"
+  },
+  {
+    "command": "brook wsserver",
+    "description": "Brook is a cross-platform strong encryption and not detectable proxy.",
+    "website": "https://txthinking.github.io/brook/#/brook-wsserver",
+    "nami": "github.com/txthinking/brook",
+    "args": [
+      {
+        "name": "--listen",
+        "value": ":9999"
+      },
+      {
+        "name": "--password",
+        "value": "hello"
+      },
+      {
+        "name": "--path",
+        "value": "/ws"
+      },
+      {
+        "name": "--tcpTimeout",
+        "value": 0
+      },
+      {
+        "name": "--udpTimeout",
+        "value": 60
+      }
+    ],
+    "function": "brook_wsserver"
+  },
+  {
+    "command": "brook wssserver",
+    "description": "Brook is a cross-platform strong encryption and not detectable proxy.",
+    "website": "https://txthinking.github.io/brook/#/brook-wsserver",
+    "nami": "github.com/txthinking/brook",
+    "args": [
+      {
+        "name": "--domain",
+        "value": ""
+      },
+      {
+        "name": "--password",
+        "value": "hello"
+      },
+      {
+        "name": "--path",
+        "value": "/ws"
+      },
+      {
+        "name": "--tcpTimeout",
+        "value": 0
+      },
+      {
+        "name": "--udpTimeout",
+        "value": 60
+      }
+    ],
+    "function": "brook_wssserver"
+  },
+  {
+    "command": "brook socks5",
+    "description": "Brook is a cross-platform strong encryption and not detectable proxy.",
+    "website": "https://txthinking.github.io/brook/#/brook-wsserver",
+    "nami": "github.com/txthinking/brook",
+    "args": [
+      {
+        "name": "--socks5",
+        "value": "1.2.3.4:1080"
+      },
+      {
+        "name": "--username",
+        "value": "hello"
+      },
+      {
+        "name": "--password",
+        "value": "world"
+      },
+      {
+        "name": "--path",
+        "value": "/ws"
+      },
+      {
+        "name": "--tcpTimeout",
+        "value": 0
+      },
+      {
+        "name": "--udpTimeout",
+        "value": 60
+      }
+    ],
+    "function": "brook_socks5"
+  },
+  {
+    "command": "brook relay",
+    "description": "Brook is a cross-platform strong encryption and not detectable proxy.",
+    "website": "https://txthinking.github.io/brook/#/brook-wsserver",
+    "nami": "github.com/txthinking/brook",
+    "args": [
+      {
+        "name": "--from",
+        "value": ":9999"
+      },
+      {
+        "name": "--to",
+        "value": "1.2.3.4:9999"
+      },
+      {
+        "name": "--tcpTimeout",
+        "value": 0
+      },
+      {
+        "name": "--udpTimeout",
+        "value": 60
+      }
+    ],
+    "function": "brook_relay"
   }
 ]

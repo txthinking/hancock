@@ -5,6 +5,8 @@
 [🩸 Youtube](https://www.youtube.com/txthinking) 
 [❤️ Sponsor](https://github.com/sponsors/txthinking)
 
+<p align="center"><img src="hancock.jpeg" width="200"></p>
+
 Manage multiple remote servers and execute commands remotely
 > 管理多个远程服务器并远程执行命令
 

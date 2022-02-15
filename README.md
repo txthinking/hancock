@@ -19,7 +19,7 @@ nami install hancock
 ```
 Note:
 
-    When adding an instance, the user must be allowed to execute sudo without a password.
+    When adding an instance, the user must be allowed to execute sudo without a password!!!
     nami and joker are automatically installed when you run command for the first time on instance.
 
 Add instance

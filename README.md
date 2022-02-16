@@ -42,12 +42,12 @@ Remove instance
     $ hancock mylinux remove
 
 
-Run nami on a instance
+Run nami on an instance
 
     $ hancock mylinux nami install brook
     $ hancock mylinux nami list
 
-Run joker on a instance
+Run joker on an instance
 
     $ hancock mylinux joker brook server --listen :9999 --password hello
     $ hancock mylinux joker last
@@ -55,12 +55,12 @@ Run joker on a instance
     $ hancock mylinux joker stop 1234
     $ hancock mylinux joker log 1234
 
-Run command and wait output on a instance
+Run command and wait output on an instance
 
     $ hancock mylinux echo hello
     $ hancock mylinux sleep 3 '&&' echo hello
 
-Start command and do not wait output on a instance
+Start command and do not wait output on an instance
 
     $ hancock mylinux start echo hello
     $ hancock mylinux start sleep 3 '&&' echo hello

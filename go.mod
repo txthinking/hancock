@@ -1,4 +1,4 @@
-module golang.cc/hancock
+module github.com/txthinking/hancock
 
 go 1.16
 

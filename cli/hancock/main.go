@@ -20,8 +20,8 @@ import (
 	"log"
 	"os"
 
+	"github.com/txthinking/hancock"
 	"github.com/urfave/cli/v2"
-	"golang.cc/hancock"
 )
 
 func main() {

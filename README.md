@@ -10,6 +10,8 @@
 Manage multiple remote servers and execute commands remotely
 > 管理多个远程服务器并远程执行命令
 
+❤️ A project by [txthinking.com](https://www.txthinking.com)
+
 ### Install via [nami](https://github.com/txthinking/nami)
 
 ```

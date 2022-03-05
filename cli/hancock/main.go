@@ -78,7 +78,7 @@ func main() {
 	}
 	app := cli.NewApp()
 	app.Name = "hancock"
-	app.Version = "20220214"
+	app.Version = "20220404"
 	app.Usage = "Deploy and run command on remote instances with built-in nami, joker"
 	app.Authors = []*cli.Author{
 		{
@@ -136,6 +136,7 @@ func main() {
 		h, err := hancock.NewHancock()
 		if err != nil {
 			log.Println(err)
+			os.Exit(1)
 			return
 		}
 		defer h.Close()
@@ -146,11 +147,13 @@ func main() {
 		h, err := hancock.NewHancock()
 		if err != nil {
 			log.Println(err)
+			os.Exit(1)
 			return
 		}
 		defer h.Close()
 		if err := h.Remove(os.Args[1]); err != nil {
 			log.Println(err)
+			os.Exit(1)
 			return
 		}
 		return
@@ -159,11 +162,13 @@ func main() {
 		h, err := hancock.NewHancock()
 		if err != nil {
 			log.Println(err)
+			os.Exit(1)
 			return
 		}
 		defer h.Close()
 		if err := h.Upload(os.Args[1], os.Args[3]); err != nil {
 			log.Println(err)
+			os.Exit(1)
 			return
 		}
 		return
@@ -172,11 +177,13 @@ func main() {
 		h, err := hancock.NewHancock()
 		if err != nil {
 			log.Println(err)
+			os.Exit(1)
 			return
 		}
 		defer h.Close()
 		if err := h.Start(append([]string{os.Args[1]}, os.Args[2:]...)); err != nil {
 			log.Println(err)
+			os.Exit(1)
 			return
 		}
 		return
@@ -185,11 +192,13 @@ func main() {
 		h, err := hancock.NewHancock()
 		if err != nil {
 			log.Println(err)
+			os.Exit(1)
 			return
 		}
 		defer h.Close()
 		if err := h.Start(append([]string{os.Args[1]}, os.Args[3:]...)); err != nil {
 			log.Println(err)
+			os.Exit(1)
 			return
 		}
 		return
@@ -198,16 +207,19 @@ func main() {
 		h, err := hancock.NewHancock()
 		if err != nil {
 			log.Println(err)
+			os.Exit(1)
 			return
 		}
 		defer h.Close()
 		if err := h.Run(append([]string{os.Args[1]}, os.Args[2:]...)); err != nil {
 			log.Println(err)
+			os.Exit(1)
 			return
 		}
 		return
 	}
 	if err := app.Run(os.Args); err != nil {
 		log.Println(err)
+		os.Exit(1)
 	}
 }

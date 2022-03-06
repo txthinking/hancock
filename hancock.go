@@ -168,6 +168,7 @@ func (h *Hancock) prepare(args []string) (*Instance, string, error) {
 	}
 	has, err := i.HasNami()
 	if err != nil {
+		log.Println(1)
 		return nil, "", err
 	}
 	if !has {

@@ -95,7 +95,7 @@ func (i *Instance) HasNami() (bool, error) {
 	defer s.Close()
 	s1, err := s.CombinedOutput("sudo -H -u root sh -c '[ -f /root/.nami/bin/nami ] && echo 1'")
 	if err != nil {
-		return false, err
+		return false, nil
 	}
 	if strings.TrimSpace(string(s1)) != "1" {
 		return false, nil
@@ -111,7 +111,7 @@ func (i *Instance) HasJoker() (bool, error) {
 	defer s.Close()
 	s1, err := s.CombinedOutput("sudo -H -u root sh -c '[ -f /root/.nami/bin/joker ] && echo 1'")
 	if err != nil {
-		return false, err
+		return false, nil
 	}
 	if strings.TrimSpace(string(s1)) != "1" {
 		return false, nil

@@ -19,7 +19,6 @@ import (
 	"os"
 	"path/filepath"
 	"strings"
-	"time"
 
 	"github.com/pkg/sftp"
 	"golang.org/x/crypto/ssh"
@@ -52,7 +51,7 @@ func NewInstance(server, user, password string, privateKey []byte) (*Instance, e
 		User:            user,
 		Auth:            l,
 		HostKeyCallback: ssh.InsecureIgnoreHostKey(),
-		Timeout:         10 * time.Second,
+		// Timeout:         10 * time.Second,
 	}
 	client, err := ssh.Dial("tcp", server, config)
 	if err != nil {

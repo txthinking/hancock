@@ -18,6 +18,7 @@ import (
 	"encoding/json"
 	"errors"
 	"fmt"
+	"log"
 	"os"
 	"path/filepath"
 	"strings"
@@ -120,7 +121,8 @@ func (h *Hancock) PrintAll() {
 		return nil
 	})
 	if err != nil {
-		fmt.Println(err)
+		log.Println(err)
+		os.Exit(1)
 		return
 	}
 	table.Render()
@@ -164,12 +166,20 @@ func (h *Hancock) prepare(args []string) (*Instance, string, error) {
 	if err != nil {
 		return nil, "", err
 	}
-	if !i.HasNami() {
+	has, err := i.HasNami()
+	if err != nil {
+		return nil, "", err
+	}
+	if !has {
 		if err := i.InstallNami(); err != nil {
 			return nil, "", err
 		}
 	}
-	if !i.HasJoker() {
+	has, err = i.HasJoker()
+	if err != nil {
+		return nil, "", err
+	}
+	if !has {
 		if err := i.InstallJoker(); err != nil {
 			return nil, "", err
 		}
@@ -182,11 +192,9 @@ func (h *Hancock) Run(args []string) error {
 	if err != nil {
 		return err
 	}
-	out, err := i.Run(s)
-	if err != nil {
+	if err := i.Run(s); err != nil {
 		return err
 	}
-	fmt.Println(out)
 	return nil
 }
 

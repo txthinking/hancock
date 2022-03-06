@@ -15,7 +15,6 @@
 package hancock
 
 import (
-	"errors"
 	"io"
 	"os"
 	"path/filepath"
@@ -64,17 +63,19 @@ func NewInstance(server, user, password string, privateKey []byte) (*Instance, e
 	}, nil
 }
 
-func (i *Instance) Run(cmd string) (string, error) {
+func (i *Instance) Run(cmd string) error {
 	s, err := i.Client.NewSession()
 	if err != nil {
-		return "", err
+		return err
 	}
 	defer s.Close()
-	b, err := s.CombinedOutput("sudo -H -u root sh -c 'PATH=/root/.nami/bin:$PATH " + cmd + "'")
+	s.Stdout = os.Stdout
+	s.Stderr = os.Stderr
+	err = s.Run("sudo -H -u root sh -c 'PATH=/root/.nami/bin:$PATH " + cmd + "'")
 	if err != nil {
-		return "", errors.New(string(b))
+		return err
 	}
-	return string(b), nil
+	return nil
 }
 
 func (i *Instance) Start(cmd string) error {
@@ -86,24 +87,40 @@ func (i *Instance) Start(cmd string) error {
 	return s.Start("sudo -H -u root sh -c 'PATH=/root/.nami/bin:$PATH " + cmd + "'")
 }
 
-func (i *Instance) HasNami() bool {
-	s, err := i.Run("[ -f /root/.nami/bin/nami ] && echo 1")
-	if err != nil || strings.TrimSpace(s) != "1" {
-		return false
+func (i *Instance) HasNami() (bool, error) {
+	s, err := i.Client.NewSession()
+	if err != nil {
+		return false, err
 	}
-	return true
+	defer s.Close()
+	s1, err := s.CombinedOutput("sudo -H -u root sh -c '[ -f /root/.nami/bin/nami ] && echo 1'")
+	if err != nil {
+		return false, err
+	}
+	if strings.TrimSpace(string(s1)) != "1" {
+		return false, nil
+	}
+	return true, nil
 }
 
-func (i *Instance) HasJoker() bool {
-	s, err := i.Run("[ -f /root/.nami/bin/joker ] && echo 1")
-	if err != nil || strings.TrimSpace(s) != "1" {
-		return false
+func (i *Instance) HasJoker() (bool, error) {
+	s, err := i.Client.NewSession()
+	if err != nil {
+		return false, err
 	}
-	return true
+	defer s.Close()
+	s1, err := s.CombinedOutput("sudo -H -u root sh -c '[ -f /root/.nami/bin/joker ] && echo 1'")
+	if err != nil {
+		return false, err
+	}
+	if strings.TrimSpace(string(s1)) != "1" {
+		return false, nil
+	}
+	return true, nil
 }
 
 func (i *Instance) InstallNami() error {
-	_, err := i.Run("curl https://bash.ooo/nami.sh | bash")
+	err := i.Run("curl https://bash.ooo/nami.sh | bash")
 	if err != nil {
 		return err
 	}
@@ -111,7 +128,7 @@ func (i *Instance) InstallNami() error {
 }
 
 func (i *Instance) InstallJoker() error {
-	_, err := i.Run("nami install joker")
+	err := i.Run("nami install joker")
 	if err != nil {
 		return err
 	}
@@ -140,7 +157,7 @@ func (i *Instance) Upload(file string) error {
 	if err := c.Chmod("/tmp/"+filepath.Base(file), 0777); err != nil {
 		return err
 	}
-	_, err = i.Run("mv /tmp/" + filepath.Base(file) + " /root/.nami/bin/" + filepath.Base(file))
+	err = i.Run("mv /tmp/" + filepath.Base(file) + " /root/.nami/bin/" + filepath.Base(file))
 	if err != nil {
 		return err
 	}

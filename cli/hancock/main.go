@@ -78,7 +78,7 @@ func main() {
 	}
 	app := cli.NewApp()
 	app.Name = "hancock"
-	app.Version = "20220406"
+	app.Version = "20220814"
 	app.Usage = "Deploy and run command on remote instances with built-in nami, joker"
 	app.Authors = []*cli.Author{
 		{

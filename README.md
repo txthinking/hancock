@@ -1,13 +1,12 @@
 # hancock
 
 [🗣 News](https://t.me/txthinking_news)
-[💬 Join](https://join.txthinking.com)
-[🩸 Youtube](https://www.youtube.com/txthinking) 
-[❤️ Sponsor](https://github.com/sponsors/txthinking)
+[🩸 Youtube](https://www.youtube.com/txthinking)
 
 <p align="center"><img src="hancock.jpeg" width="200"></p>
 
 Manage multiple remote servers and execute commands remotely
+
 > 管理多个远程服务器并远程执行命令
 
 ❤️ A project by [txthinking.com](https://www.txthinking.com)

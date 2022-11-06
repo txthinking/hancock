@@ -39,12 +39,12 @@ type SSH struct {
 	Key      []byte
 }
 
-func NewHancock() (*Hancock, error) {
+func NewHancock(readonly bool) (*Hancock, error) {
 	s, err := os.UserHomeDir()
 	if err != nil {
 		return nil, err
 	}
-	db, err := bbolt.Open(filepath.Join(s, ".hancock"), 0644, nil)
+	db, err := bbolt.Open(filepath.Join(s, ".hancock"), 0644, &bbolt.Options{ReadOnly: readonly})
 	if err != nil {
 		return nil, err
 	}
@@ -101,12 +101,12 @@ func (h *Hancock) Remove(name string) error {
 func (h *Hancock) PrintAll() {
 	table := tablewriter.NewWriter(os.Stdout)
 	table.SetHeader([]string{"Name", "Server", "User", "Password", "Key"})
-	err := h.DB.Update(func(tx *bbolt.Tx) error {
-		t, err := tx.CreateBucketIfNotExists([]byte("ssh"))
-		if err != nil {
-			return err
+	err := h.DB.View(func(tx *bbolt.Tx) error {
+		t := tx.Bucket([]byte("ssh"))
+		if t == nil {
+			return nil
 		}
-		err = t.ForEach(func(k, v []byte) error {
+		err := t.ForEach(func(k, v []byte) error {
 			s := &SSH{}
 			if err := json.Unmarshal(v, s); err != nil {
 				return err
@@ -118,7 +118,7 @@ func (h *Hancock) PrintAll() {
 			table.Append([]string{s.Name, s.Server, s.User, s.Password, ks})
 			return nil
 		})
-		return nil
+		return err
 	})
 	if err != nil {
 		log.Println(err)
@@ -130,10 +130,10 @@ func (h *Hancock) PrintAll() {
 
 func (h *Hancock) prepare(args []string) (*Instance, string, error) {
 	s := &SSH{}
-	err := h.DB.Update(func(tx *bbolt.Tx) error {
-		t, err := tx.CreateBucketIfNotExists([]byte("ssh"))
-		if err != nil {
-			return err
+	err := h.DB.View(func(tx *bbolt.Tx) error {
+		t := tx.Bucket([]byte("ssh"))
+		if t == nil {
+			return errors.New("No instance named " + args[0])
 		}
 		b := t.Get([]byte(args[0]))
 		if b == nil {

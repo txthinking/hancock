@@ -78,7 +78,7 @@ func main() {
 	}
 	app := cli.NewApp()
 	app.Name = "hancock"
-	app.Version = "20220814"
+	app.Version = "20221106"
 	app.Usage = "Deploy and run command on remote instances with built-in nami, joker"
 	app.Authors = []*cli.Author{
 		{
@@ -119,7 +119,7 @@ func main() {
 				},
 			},
 			Action: func(c *cli.Context) error {
-				h, err := hancock.NewHancock()
+				h, err := hancock.NewHancock(false)
 				if err != nil {
 					return err
 				}
@@ -133,7 +133,7 @@ func main() {
 		},
 	}
 	if len(os.Args) == 2 && os.Args[1] == "list" {
-		h, err := hancock.NewHancock()
+		h, err := hancock.NewHancock(true)
 		if err != nil {
 			log.Println(err)
 			os.Exit(1)
@@ -144,7 +144,7 @@ func main() {
 		return
 	}
 	if len(os.Args) == 3 && os.Args[2] == "remove" {
-		h, err := hancock.NewHancock()
+		h, err := hancock.NewHancock(false)
 		if err != nil {
 			log.Println(err)
 			os.Exit(1)
@@ -159,7 +159,7 @@ func main() {
 		return
 	}
 	if len(os.Args) == 4 && os.Args[2] == "upload" {
-		h, err := hancock.NewHancock()
+		h, err := hancock.NewHancock(true)
 		if err != nil {
 			log.Println(err)
 			os.Exit(1)
@@ -174,7 +174,7 @@ func main() {
 		return
 	}
 	if len(os.Args) > 3 && os.Args[2] == "joker" && (os.Args[3] != "list" && os.Args[3] != "last" && os.Args[3] != "stop" && os.Args[3] != "log" && os.Args[3] != "help" && os.Args[3] != "version" && os.Args[3] != "--help" && os.Args[3] != "-h" && os.Args[3] != "--version" && os.Args[3] != "-v") {
-		h, err := hancock.NewHancock()
+		h, err := hancock.NewHancock(true)
 		if err != nil {
 			log.Println(err)
 			os.Exit(1)
@@ -189,7 +189,7 @@ func main() {
 		return
 	}
 	if len(os.Args) > 3 && os.Args[2] == "start" {
-		h, err := hancock.NewHancock()
+		h, err := hancock.NewHancock(true)
 		if err != nil {
 			log.Println(err)
 			os.Exit(1)
@@ -204,7 +204,7 @@ func main() {
 		return
 	}
 	if len(os.Args) > 2 && os.Args[1] != "add" {
-		h, err := hancock.NewHancock()
+		h, err := hancock.NewHancock(true)
 		if err != nil {
 			log.Println(err)
 			os.Exit(1)

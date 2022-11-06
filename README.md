@@ -1,6 +1,6 @@
 # hancock
 
-[🗣 News](https://t.me/txthinking_news)
+[🗣 News](https://t.me/s/txthinking_news)
 [🩸 Youtube](https://www.youtube.com/txthinking)
 
 <p align="center"><img src="hancock.jpeg" width="200"></p>

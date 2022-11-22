@@ -16,9 +16,11 @@ package hancock
 
 import (
 	"io"
+	"net"
 	"os"
 	"path/filepath"
 	"strings"
+	"time"
 
 	"github.com/pkg/sftp"
 	"golang.org/x/crypto/ssh"
@@ -47,16 +49,20 @@ func NewInstance(server, user, password string, privateKey []byte) (*Instance, e
 		l = append(l, ssh.PublicKeys(signer))
 	}
 
+	conn, err := net.DialTimeout("tcp", server, 60*time.Second)
+	if err != nil {
+		return nil, err
+	}
 	config := &ssh.ClientConfig{
 		User:            user,
 		Auth:            l,
 		HostKeyCallback: ssh.InsecureIgnoreHostKey(),
-		// Timeout:         10 * time.Second,
 	}
-	client, err := ssh.Dial("tcp", server, config)
+	c, chans, reqs, err := ssh.NewClientConn(&Conn{Conn: conn, Timeout: 60}, server, config)
 	if err != nil {
 		return nil, err
 	}
+	client := ssh.NewClient(c, chans, reqs)
 	return &Instance{
 		Client: client,
 	}, nil

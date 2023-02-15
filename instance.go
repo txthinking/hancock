@@ -30,7 +30,7 @@ type Instance struct {
 	Client *ssh.Client
 }
 
-func NewInstance(server, user, password string, privateKey []byte) (*Instance, error) {
+func NewInstance(server, user, password string, privateKey []byte, timeout int) (*Instance, error) {
 	l := make([]ssh.AuthMethod, 0)
 	if password != "" {
 		l = append(l, ssh.KeyboardInteractive(func(user, instruction string, questions []string, echos []bool) (answers []string, err error) {
@@ -58,7 +58,7 @@ func NewInstance(server, user, password string, privateKey []byte) (*Instance, e
 		Auth:            l,
 		HostKeyCallback: ssh.InsecureIgnoreHostKey(),
 	}
-	c, chans, reqs, err := ssh.NewClientConn(&Conn{Conn: conn, Timeout: 60}, server, config)
+	c, chans, reqs, err := ssh.NewClientConn(&Conn{Conn: conn, Timeout: timeout}, server, config)
 	if err != nil {
 		return nil, err
 	}

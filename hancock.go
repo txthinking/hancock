@@ -162,7 +162,7 @@ func (h *Hancock) prepare(args []string) (*Instance, string, error) {
 		}
 		l = append(l, v)
 	}
-	i, err := NewInstance(s.Server, s.User, s.Password, s.Key)
+	i, err := NewInstance(s.Server, s.User, s.Password, s.Key, 60)
 	if err != nil {
 		return nil, "", err
 	}
